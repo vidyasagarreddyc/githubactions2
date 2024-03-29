@@ -7,10 +7,11 @@ on:
         description: 'test'
         required: true
         default: "From Github action 2"
+environment: prd
 
 jobs:
   call-workflow-passing-data:
-    environment: prd
+    
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
