@@ -1,0 +1,19 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  workflow_dispatch:
+    inputs:
+      Pass_Input:
+        description: 'test'
+        required: true
+        default: "From Github action 2"
+
+jobs:
+  call-workflow-passing-data:
+  runs-on: ubuntu-latest
+  steps:
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+    with:
+      MT_NAME: "Calling from Github 2"
+      MT_FOLDER: "Second variable testing from Github 2"
+    
