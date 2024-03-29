@@ -7,12 +7,11 @@ on:
 
 jobs:
   call-workflow-passing-data:
-  runs-on: ubuntu-latest 
-    permissions:
-      contents: read
-      pull-requests: write
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/a.yml@main
-    with:
-      config-path: "abc"
-    secrets:
-      token: "test-hello"
+    runs-on: ubuntu-latest 
+    steps:
+    - name: call workfolow test
+      uses: vidyasagarreddyc/githubactions1/.github/workflows/a.yml@main
+      with:
+        config-path: "abc"
+      secrets:
+        token: "test-hello"
