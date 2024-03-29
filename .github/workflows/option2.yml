@@ -10,8 +10,9 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+    uses: your-org/your-repo/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
-      MT_FOLDER: "twwjdhe"
+      MT_FOLDER: ${{ vars.VAR1 }}
+      environment: 'prd'
     
