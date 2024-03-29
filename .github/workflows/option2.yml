@@ -9,9 +9,9 @@ on:
         default: "From Github action 2"
 
 jobs:
+  env:
+    ENVIRONMENT: prd
   call-workflow-passing-data:
-    env:
-      ENVIRONMENT: prd
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
