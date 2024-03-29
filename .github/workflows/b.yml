@@ -12,4 +12,4 @@ jobs:
     with:
       config-path: "abc"
     secrets:
-      token: "test-hello"
+      token: "test-hello1"
