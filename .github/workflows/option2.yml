@@ -15,5 +15,5 @@ jobs:
       ENVIRONMENT: prd
     strategy:
       matrix:
-        MT_NAME: ["Calling from Github 2"]
-        MT_FOLDER: [${{ secrets.VAR1 }}]
+        MT_NAME: "test"
+        MT_FOLDER: ${{ vars.VAR1 }}
