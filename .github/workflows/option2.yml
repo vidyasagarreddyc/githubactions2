@@ -13,6 +13,7 @@ jobs:
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
-      MT_FOLDER: "hdkhkhde"
+      MT_FOLDER: ${{ vars.VAR1 }}
+      environment: 'prd'
 
     
