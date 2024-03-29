@@ -10,10 +10,10 @@ on:
 
 jobs:
   call-workflow-passing-data:
-  runs-on: ubuntu-latest
-  steps:
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
-    with:
-      MT_NAME: "Calling from Github 2"
-      MT_FOLDER: "Second variable testing from Github 2"
+    runs-on: ubuntu-latest
+    steps:
+      uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+      with:
+        MT_NAME: "Calling from Github 2"
+        MT_FOLDER: "Second variable testing from Github 2"
     
