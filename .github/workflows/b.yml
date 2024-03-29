@@ -1,0 +1,17 @@
+name: Call a reusable workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  call-workflow-passing-data:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/a.yml@main
+    with:
+      config-path: "abc"
+    secrets:
+      token: "test-hello"
