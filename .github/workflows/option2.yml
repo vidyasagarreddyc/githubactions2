@@ -11,16 +11,8 @@ on:
 jobs:
   call-workflow-passing-data:
     runs-on: ubuntu-latest
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/b.yml@main
     with:
       MT_NAME: "Calling from Github 2"
       MT_FOLDER: "Second variable testing from Github 2"
-
-  call-workflow-passing-data:
-      permissions:
-        contents: read
-        pull-requests: write
-      uses: octo-org/example-repo/.github/workflows/workflow-B.yml@main
-      with:
-        config-path: .github/labeler.yml
     
