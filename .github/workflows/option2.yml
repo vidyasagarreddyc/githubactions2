@@ -1,5 +1,4 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   workflow_dispatch:
     inputs:
@@ -7,14 +6,18 @@ on:
         description: 'test'
         required: true
         default: "From Github action 2"
-environment: prd
 
 jobs:
   call-workflow-passing-data:
-    
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
-    with:
-      MT_NAME: "Calling from Github 2"
-      MT_FOLDER: ${{ vars.var1 }}
-
-    
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: prd
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      
+      - name: Run other workflow
+        uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+        with:
+          MT_NAME: "Calling from Github 2"
+          MT_FOLDER: ${{ secrets.VAR1 }}
