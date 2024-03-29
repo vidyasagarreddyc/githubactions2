@@ -9,15 +9,11 @@ on:
 
 jobs:
   call-workflow-passing-data:
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT: prd
-    steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      
-      - name: Run other workflow
-        uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
-        with:
-          MT_NAME: "Calling from Github 2"
-          MT_FOLDER: ${{ secrets.VAR1 }}
+    strategy:
+      matrix:
+        MT_NAME: ["Calling from Github 2"]
+        MT_FOLDER: [${{ secrets.VAR1 }}]
