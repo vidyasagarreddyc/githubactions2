@@ -10,10 +10,10 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    env: prd
+    # env: prd
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
-      MT_FOLDER: ${{ vars.var1 }}
+      MT_FOLDER: "sghdsjwfde"
 
     
