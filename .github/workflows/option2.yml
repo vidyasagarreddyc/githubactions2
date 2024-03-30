@@ -16,7 +16,6 @@ jobs:
       MT_FOLDER: ${{ vars.test }}
       environment: 'prd'
 
-jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     environment: prd
