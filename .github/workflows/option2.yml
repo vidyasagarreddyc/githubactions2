@@ -20,7 +20,9 @@ jobs:
       - run: echo "${{ vars.test }}"
       - name: Set Input
         id: set_input
-        run: echo "::set-output name=my_input::${{ vars.test }}"
+        run: |
+          echo "${{ vars.test }}"
+          echo "::set-output name=my_input::${{ vars.test }}"
 
   call-workflow-passing-data:
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
