@@ -9,17 +9,23 @@ on:
         default: "From Github action 2"
 
 jobs:
-  call-workflow-passing-data:
-    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
-    with:
-      MT_NAME: "Calling from Github 2"
-      MT_FOLDER: ${{ vars.test }}
-      environment: 'prd'
-
-  Explore-GitHub-Actions:
+  set_input_job:
     runs-on: ubuntu-latest
     environment: prd
+    outputs:
+      my_input: ${{ steps.set_input.outputs.my_input }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - run: echo "${{ vars.test }}"
+      - name: Set Input
+        id: set_input
+        run: echo "::set-output name=my_input::${{ vars.test }}"
+
+  call-workflow-passing-data:
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
+    with:
+      MT_NAME: "Calling from Github 2"
+      MT_FOLDER: ${{ needs.set_input_job.outputs.my_input }}
+      environment: 'prd'
+
