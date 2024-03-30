@@ -28,6 +28,6 @@ jobs:
     uses: vidyasagarreddyc/githubactions1/.github/workflows/option1.yml@main
     with:
       MT_NAME: "Calling from Github 2"
-      MT_FOLDER: ${{ needs.set_input_job.outputs.my_input }}
+      MT_FOLDER: "xhdsgwjywe"
       environment: 'prd'
 
