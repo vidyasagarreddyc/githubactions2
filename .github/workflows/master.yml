@@ -1,0 +1,23 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: false
+  workflow_dispatch:
+
+jobs:
+  run-based-on-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check how the workflow was triggered
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_call" ]; then
+            echo "Triggered by another workflow via workflow_call"
+            # Add code specific to workflow_call
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Triggered manually via workflow_dispatch"
+            # Add code specific to workflow_dispatch
+          else
+            echo "Unexpected trigger: ${{ github.event_name }}"
