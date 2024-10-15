@@ -13,6 +13,11 @@ on:
         required: false
         default: 'latest'
         type: string
+      called_from:
+        description: 'Indicates if called from another workflow'
+        required: false
+        default: ''
+        type: string
   workflow_dispatch:
     inputs:
       app_version:
@@ -26,12 +31,8 @@ jobs:
     steps:
       - name: Check how the workflow was triggered
         run: |
-          if [ "${{ github.event_name }}" == "workflow_call" ]; then
+          if [ "${{ github.event.inputs.called_from }}" != "" ]; then
             echo "Triggered by another workflow via workflow_call"
-            echo "${{ github.event_name }}"
-          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "${{ github.event_name }}"
-            echo "Triggered manually via workflow_dispatch"
           else
-            echo "Unexpected trigger: ${{ github.event_name }}"
+            echo "workflow_dispatch"
           fi
