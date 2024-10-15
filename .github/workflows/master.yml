@@ -29,9 +29,9 @@ jobs:
           if [ "${{ github.event_name }}" == "workflow_call" ]; then
             echo "Triggered by another workflow via workflow_call"
             echo "${{ github.event_name }}"
-
           elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             echo "${{ github.event_name }}"
             echo "Triggered manually via workflow_dispatch"
           else
             echo "Unexpected trigger: ${{ github.event_name }}"
+          fi
