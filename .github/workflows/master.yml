@@ -2,10 +2,21 @@ name: Reusable Workflow
 
 on:
   workflow_call:
-    secrets:
-      GITHUB_TOKEN:
+    inputs:
+      environment:
+        description: 'The environment to deploy to'
+        required: true
+        default: 'dev'
+      app_version:
+        description: 'The application version to deploy'
         required: false
+        default: 'latest'
   workflow_dispatch:
+    inputs:
+      app_version:
+        description: 'The application version to deploy'
+        required: false
+        default: 'latest'
 
 jobs:
   run-based-on-trigger:
@@ -15,9 +26,13 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_call" ]; then
             echo "Triggered by another workflow via workflow_call"
+            echo "Environment: ${{ inputs.environment }}"
+            echo "App Version: ${{ inputs.app_version }}"
             # Add code specific to workflow_call
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "Triggered manually via workflow_dispatch"
+            echo "Environment: ${{ github.event.inputs.environment }}"
+            echo "App Version: ${{ github.event.inputs.app_version }}"
             # Add code specific to workflow_dispatch
           else
             echo "Unexpected trigger: ${{ github.event_name }}"
