@@ -3,36 +3,13 @@ name: Reusable Workflow
 on:
   workflow_call:
     inputs:
-      environment:
-        description: 'The environment to deploy to'
+      event_type:
         required: true
-        default: 'dev'
         type: string
-      app_version:
-        description: 'The application version to deploy'
-        required: false
-        default: 'latest'
-        type: string
-      called_from:
-        description: 'Indicates if called from another workflow'
-        required: false
-        default: ''
-        type: string
-  workflow_dispatch:
-    inputs:
-      app_version:
-        description: 'The application version to deploy'
-        required: false
-        default: 'latest'
 
 jobs:
-  run-based-on-trigger:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Check how the workflow was triggered
-        run: |
-          if [ "${{ github.event.inputs.called_from }}" != "" ]; then
-            echo "Triggered by another workflow via workflow_call"
-          else
-            echo "workflow_dispatch"
-          fi
+      - name: Print Event Type
+        run: echo "Event Type:  ${{ github.event.inputs.event_type }}"
