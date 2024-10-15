@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Event Type
-        run: echo "Event Type:  ${{ github.event.inputs.event_type }}"
+        run: echo "Event Type:  ${{ inputs.event_type }}"
