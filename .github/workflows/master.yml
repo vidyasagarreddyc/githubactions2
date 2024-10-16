@@ -5,7 +5,7 @@ on:
     inputs:
       environment:
         description: 'The environment to deploy to'
-        required: true
+        required: false # Set to false if you want this to be optional
         default: 'dev'
         type: string
       app_version:
@@ -13,6 +13,17 @@ on:
         required: false
         default: 'latest'
         type: string
+      var1:
+        description: 'First variable'
+        required: false
+        default: 'latest'
+        type: string
+      var2:
+        description: 'Second variable'
+        required: false
+        default: 'latest'
+        type: string
+
   workflow_dispatch:
     inputs:
       app_version:
@@ -25,10 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if environment input is passed
+        if: ${{ inputs.environment != '' }} # Check if the input is not empty
         run: |
-          if [ -z "${{ inputs.environment }}" ]; then
-            echo "Error: 'environment' input is not passed."
-            exit 1
-          else
-            echo "Environment input is passed: ${{ inputs.environment }}"
-          fi
+          echo "Environment input is passed: ${{ inputs.environment }}"
+      - name: Handle missing environment input
+        if: ${{ inputs.environment == '' }} # Check if the input is empty
+        run: |
+          echo "Error: 'environment' input is not passed."
+          exit 1
