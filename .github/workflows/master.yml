@@ -5,8 +5,7 @@ on:
     inputs:
       environment:
         description: 'The environment to deploy to'
-        required: false # Set to false if you want this to be optional
-        default: 'dev'
+        required: true # Set to false if you want this to be optional
         type: string
       app_version:
         description: 'The application version to deploy'
