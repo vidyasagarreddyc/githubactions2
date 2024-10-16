@@ -13,11 +13,6 @@ on:
         required: false
         default: 'latest'
         type: string
-      called_from:
-        description: 'Indicates if called from another workflow'
-        required: false
-        default: ''
-        type: string
   workflow_dispatch:
     inputs:
       app_version:
