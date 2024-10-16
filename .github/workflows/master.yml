@@ -1,4 +1,4 @@
-name: Reusable Workflow
+"name: Reusable Workflow
 
 on:
   workflow_call:
@@ -38,7 +38,7 @@ jobs:
         if: ${{ inputs.environment != '' }} # Check if the input is not empty
         run: |
           echo "Environment input is passed: ${{ inputs.environment }}"
-          echo "considr=ered as workflow_call
+          echo "considr=ered as workflow_call"
 
   run-based-on-2:
     runs-on: ubuntu-latest
