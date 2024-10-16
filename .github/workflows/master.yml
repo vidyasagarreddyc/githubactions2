@@ -24,12 +24,11 @@ jobs:
   run-based-on-trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Check how the workflow was triggered
+      - name: Check if environment input is passed
         run: |
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ "${{ github.event.inputs.called_from }}" == "" ]; then
-            echo "Triggered manually via workflow_dispatch"
-          elif [ "${{ github.event.inputs.called_from }}" != "" ]; then
-            echo "Triggered by another workflow via workflow_call"
+          if [ -z "${{ inputs.environment }}" ]; then
+            echo "Error: 'environment' input is not passed."
+            exit 1
           else
-            echo "Unexpected trigger: ${{ github.event_name }}"
+            echo "Environment input is passed: ${{ inputs.environment }}"
           fi
