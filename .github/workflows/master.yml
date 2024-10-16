@@ -38,8 +38,9 @@ jobs:
         if: ${{ inputs.environment != '' }} # Check if the input is not empty
         run: |
           echo "Environment input is passed: ${{ inputs.environment }}"
+          echo "considr=ered as workflow_call"
       - name: Handle missing environment input
         if: ${{ inputs.environment == '' }} # Check if the input is empty
         run: |
           echo "Error: 'environment' input is not passed."
-          exit 1
+          echo "considr=ered as workflow_dispatch"
