@@ -1,0 +1,11 @@
+name: "Caller Workflow"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-reusable-action:
+    uses: vidyasagarreddyc/githubactions1/.github/workflows/json.yml@main
+    with:
+      json_file: input.json
